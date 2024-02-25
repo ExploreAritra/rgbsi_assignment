@@ -1,4 +1,5 @@
 import 'package:assignment/src/core/utils/text_styles.dart';
+import 'package:assignment/src/core/widgets/app_bar.dart';
 import 'package:assignment/src/core/widgets/button_widget.dart';
 import 'package:assignment/src/modules/random_user/presentation/widgets/employee_details_card.dart';
 import 'package:flutter/material.dart';
@@ -11,18 +12,12 @@ class RandomUserScreen extends GetView<RandomUserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
+      appBar: const CustomAppBar(title: "Random User",),
       body: _body(),
       bottomNavigationBar: _refreshButton(),
     );
   }
 
-  PreferredSizeWidget _appBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      title: Text("Random User", style: textStyles.h6TextStyle,),
-    );
-  }
 
   Widget _body() {
     return Center(

@@ -1,5 +1,6 @@
 import 'package:assignment/src/core/utils/text_styles.dart';
 import 'package:assignment/src/core/utils/ui_helpers.dart';
+import 'package:assignment/src/core/widgets/app_bar.dart';
 import 'package:assignment/src/core/widgets/button_widget.dart';
 import 'package:assignment/src/modules/enable_bluetooth/presentation/controllers/bluetooth_controller.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,8 @@ class BluetoothScreen extends GetView<BluetoothController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
+      appBar: const CustomAppBar(title: "Bluetooth Status",),
       body: _body(),
-    );
-  }
-
-  PreferredSizeWidget _appBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      title: Text("Bluetooth Status", style: textStyles.h6TextStyle,),
     );
   }
 

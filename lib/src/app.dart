@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         await Get.putAsync<DaoSession>(() async => await DbProvider.instance.getDaoSession()) ;
       }),
       initialRoute: RouteConstants.mainScreen,
+
     );
   }
 }

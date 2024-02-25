@@ -1,5 +1,6 @@
 
 import 'package:assignment/src/core/utils/text_styles.dart';
+import 'package:assignment/src/core/widgets/app_bar.dart';
 import 'package:assignment/src/core/widgets/button_widget.dart';
 import 'package:assignment/src/modules/random_dog/presentation/widgets/local_image_view.dart';
 import 'package:assignment/src/modules/random_dog/presentation/widgets/remote_image_view.dart';
@@ -14,18 +15,12 @@ class RandomDogScreen extends GetView<RandomDogController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
+      appBar: const CustomAppBar(title: "Random Dog",),
       body: _body(),
       bottomNavigationBar: _refreshButton(),
     );
   }
 
-  PreferredSizeWidget _appBar() {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      title: Text("Random Dog", style: textStyles.h6TextStyle,),
-    );
-  }
 
   Widget _body() {
     return Center(

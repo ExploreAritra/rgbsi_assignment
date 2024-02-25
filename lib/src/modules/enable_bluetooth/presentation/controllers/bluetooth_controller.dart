@@ -31,7 +31,7 @@ class BluetoothController extends GetxController{
       if(state) {
         bluetoothStatus.value = "Bluetooth is on";
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       state = false;
       bluetoothStatus.value = "Bluetooth failed to turn on";
     }
@@ -46,7 +46,7 @@ class BluetoothController extends GetxController{
       if(state) {
         bluetoothStatus.value = "Bluetooth is off";
       }
-    } on PlatformException catch (e) {
+    } on PlatformException {
       state = false;
       bluetoothStatus.value = "Bluetooth failed to turn off";
     }

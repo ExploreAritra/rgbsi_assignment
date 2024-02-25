@@ -1,5 +1,4 @@
 import 'package:assignment/src/modules/random_user/business/entities/random_user_entity.dart';
-import 'package:dartz/dartz.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
 
@@ -11,8 +10,10 @@ String randomUserModelToJson(RandomUserModel data) => json.encode(data.toJson())
 
 @JsonSerializable()
 class RandomUserModel extends RandomUserEntity {
+  @override
   @JsonKey(name: "results")
   final List<UserModel>? results;
+  @override
   @JsonKey(name: "info")
   final InfoModel? info;
 
@@ -40,12 +41,16 @@ class RandomUserModel extends RandomUserEntity {
 
 @JsonSerializable()
 class InfoModel extends InfoEntity{
+  @override
   @JsonKey(name: "seed")
   final String? seed;
+  @override
   @JsonKey(name: "results")
   final int? results;
+  @override
   @JsonKey(name: "page")
   final int? page;
+  @override
   @JsonKey(name: "version")
   final String? version;
 
@@ -81,28 +86,40 @@ class InfoModel extends InfoEntity{
 
 @JsonSerializable()
 class UserModel extends UserEntity {
+  @override
   @JsonKey(name: "gender")
   final String? gender;
+  @override
   @JsonKey(name: "name")
   final NameModel? name;
+  @override
   @JsonKey(name: "location")
   final LocationModel? location;
+  @override
   @JsonKey(name: "email")
   final String? email;
+  @override
   @JsonKey(name: "login")
   final LoginModel? login;
+  @override
   @JsonKey(name: "dob")
   final DobModel? dob;
+  @override
   @JsonKey(name: "registered")
   final DobModel? registered;
+  @override
   @JsonKey(name: "phone")
   final String? phone;
+  @override
   @JsonKey(name: "cell")
   final String? cell;
+  @override
   @JsonKey(name: "id")
   final IdModel? id;
+  @override
   @JsonKey(name: "picture")
   final PictureModel? picture;
+  @override
   @JsonKey(name: "nat")
   final String? nat;
 
@@ -170,8 +187,10 @@ class UserModel extends UserEntity {
 
 @JsonSerializable()
 class DobModel extends DobEntity{
+  @override
   @JsonKey(name: "date")
   final DateTime? date;
+  @override
   @JsonKey(name: "age")
   final int? age;
 
@@ -199,8 +218,10 @@ class DobModel extends DobEntity{
 
 @JsonSerializable()
 class IdModel extends IdEntity{
+  @override
   @JsonKey(name: "name")
   final String? name;
+  @override
   @JsonKey(name: "value")
   final String? value;
 
@@ -228,18 +249,25 @@ class IdModel extends IdEntity{
 
 @JsonSerializable()
 class LocationModel extends LocationEntity{
+  @override
   @JsonKey(name: "street")
   final StreetModel? street;
+  @override
   @JsonKey(name: "city")
   final String? city;
+  @override
   @JsonKey(name: "state")
   final String? state;
+  @override
   @JsonKey(name: "country")
   final String? country;
+  @override
   @JsonKey(name: "postcode")
   final String? postcode;
+  @override
   @JsonKey(name: "coordinates")
   final CoordinatesModel? coordinates;
+  @override
   @JsonKey(name: "timezone")
   final TimezoneModel? timezone;
 
@@ -287,8 +315,10 @@ class LocationModel extends LocationEntity{
 
 @JsonSerializable()
 class CoordinatesModel extends CoordinatesEntity{
+  @override
   @JsonKey(name: "latitude")
   final String? latitude;
+  @override
   @JsonKey(name: "longitude")
   final String? longitude;
 
@@ -316,8 +346,10 @@ class CoordinatesModel extends CoordinatesEntity{
 
 @JsonSerializable()
 class StreetModel extends StreetEntity{
+  @override
   @JsonKey(name: "number")
   final int? number;
+  @override
   @JsonKey(name: "name")
   final String? name;
 
@@ -345,8 +377,10 @@ class StreetModel extends StreetEntity{
 
 @JsonSerializable()
 class TimezoneModel extends TimezoneEntity{
+  @override
   @JsonKey(name: "offset")
   final String? offset;
+  @override
   @JsonKey(name: "description")
   final String? description;
 
@@ -374,18 +408,25 @@ class TimezoneModel extends TimezoneEntity{
 
 @JsonSerializable()
 class LoginModel extends LoginEntity{
+  @override
   @JsonKey(name: "uuid")
   final String? uuid;
+  @override
   @JsonKey(name: "username")
   final String? username;
+  @override
   @JsonKey(name: "password")
   final String? password;
+  @override
   @JsonKey(name: "salt")
   final String? salt;
+  @override
   @JsonKey(name: "md5")
   final String? md5;
+  @override
   @JsonKey(name: "sha1")
   final String? sha1;
+  @override
   @JsonKey(name: "sha256")
   final String? sha256;
 
@@ -433,10 +474,13 @@ class LoginModel extends LoginEntity{
 
 @JsonSerializable()
 class NameModel extends NameEntity{
+  @override
   @JsonKey(name: "title")
   final String? title;
+  @override
   @JsonKey(name: "first")
   final String? first;
+  @override
   @JsonKey(name: "last")
   final String? last;
 
@@ -468,12 +512,16 @@ class NameModel extends NameEntity{
 
 @JsonSerializable()
 class PictureModel extends PictureEntity{
+  @override
   @JsonKey(name: "large")
   final String? large;
+  @override
   @JsonKey(name: "medium")
   final String? medium;
+  @override
   @JsonKey(name: "thumbnail")
   final String? thumbnail;
+  @override
   @JsonKey(name: "path")
   final String? path;
 

@@ -109,7 +109,7 @@ LocationModel _$LocationModelFromJson(Map<String, dynamic> json) =>
       city: json['city'] as String?,
       state: json['state'] as String?,
       country: json['country'] as String?,
-      postcode: json['postcode']?.toString() as String?,
+      postcode: json['postcode']?.toString(),
       coordinates: json['coordinates'] == null
           ? null
           : CoordinatesModel.fromJson(

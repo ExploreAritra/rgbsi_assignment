@@ -184,7 +184,7 @@ main() {
 
           final response = await dataSource.getRandomUser(
               randomUserParams: RandomUserParams());
-          var subject;
+          late Object subject;
           response.fold(
             (newFailure) {
               subject = newFailure;
@@ -213,7 +213,7 @@ main() {
           final response = await dataSource.getRandomUser(
               randomUserParams: RandomUserParams());
 
-          var subject;
+          late Object subject;
           response.fold(
             (newFailure) {
               subject = newFailure;

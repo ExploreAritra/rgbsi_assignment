@@ -32,10 +32,10 @@ class DbProvider {
     final directory = (await getDatabasesPath());
 
     // provide the full path to the database on the device and the db name
-    final _path = join(directory, dbName);
+    final path = join(directory, dbName);
 
     return await openDatabase(
-      _path,
+      path,
       version: dbVersion,
       onOpen: (db) {},
       onCreate: _onCreate,

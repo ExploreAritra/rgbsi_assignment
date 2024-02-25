@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -24,31 +25,47 @@ class BluetoothController extends GetxController{
 
   Future<void> turnOnBluetooth() async {
     bool state;
-    bluetoothStatus.value = "Turning on bluetooth...";
+    if(Platform.isAndroid) {
+      bluetoothStatus.value = "Turning on bluetooth...";
+    }
     try {
       final result = await platform.invokeMethod<bool>('turnOnBluetooth');
       state = result ?? false;
-      if(state) {
+      if(state && Platform.isAndroid) {
         bluetoothStatus.value = "Bluetooth is on";
+      } else {
+        bluetoothStatus.value = "Please enablecd bluetooth from settings";
       }
     } on PlatformException {
       state = false;
-      bluetoothStatus.value = "Bluetooth failed to turn on";
+      if(Platform.isAndroid) {
+        bluetoothStatus.value = "Bluetooth failed to turn on";
+      } else {
+        bluetoothStatus.value = "Error opening Settings";
+      }
     }
   }
 
   Future<void> turnOffBluetooth() async {
     bool state;
-    bluetoothStatus.value = "Turning off bluetooth...";
+    if(Platform.isAndroid) {
+      bluetoothStatus.value = "Turning off bluetooth...";
+    }
     try {
       final result = await platform.invokeMethod<bool>('turnOffBluetooth');
       state = result ?? false;
-      if(state) {
+      if(state && Platform.isAndroid) {
         bluetoothStatus.value = "Bluetooth is off";
+      } else {
+        bluetoothStatus.value = "Please disable bluetooth from settings";
       }
     } on PlatformException {
       state = false;
-      bluetoothStatus.value = "Bluetooth failed to turn off";
+      if(Platform.isAndroid) {
+        bluetoothStatus.value = "Bluetooth failed to turn off";
+      } else {
+        bluetoothStatus.value = "Error opening Settings";
+      }
     }
   }
 

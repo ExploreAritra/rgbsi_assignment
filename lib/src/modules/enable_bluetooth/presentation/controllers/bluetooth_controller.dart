@@ -34,7 +34,7 @@ class BluetoothController extends GetxController{
       if(state && Platform.isAndroid) {
         bluetoothStatus.value = "Bluetooth is on";
       } else {
-        bluetoothStatus.value = "Please enablecd bluetooth from settings";
+        bluetoothStatus.value = "Please enabled bluetooth from settings";
       }
     } on PlatformException {
       state = false;

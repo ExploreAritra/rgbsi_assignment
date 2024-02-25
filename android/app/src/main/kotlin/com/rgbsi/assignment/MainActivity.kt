@@ -37,9 +37,6 @@ class MainActivity: FlutterActivity() {
 
 
     private fun initPermissions(result: MethodChannel.Result, action: BluetoothAction) {
-        if (activeResult != null) {
-            result.error("init_running", "only one initialize call allowed at a time", null)
-        }
         activeResult = result
         currentAction = action
         checkPermissions(application)

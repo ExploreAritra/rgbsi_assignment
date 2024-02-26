@@ -1,6 +1,7 @@
 import UIKit
 import Flutter
 import CoreBluetooth
+import UIKit
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate, CBCentralManagerDelegate, FlutterStreamHandler {
@@ -66,7 +67,7 @@ import CoreBluetooth
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-//        print("received bluetooth update callback: \(central.state)")
+        print("received bluetooth update callback: \(central.state)")
         DispatchQueue.main.async {
             switch central.state {
                 case .unsupported:
@@ -115,20 +116,21 @@ import CoreBluetooth
     }
     
     private func changeBluetoothStatusDialog(result: @escaping FlutterResult, shouldEnable: Bool) {
-        AppDelegate.openBluetoothSettings { isSuccess in
-                if isSuccess == false {
-//                    print("Error opening Settings")
-                    self.updateState(state: false)
-                } else {
-                    if(shouldEnable) {
-//                        print("Please enable bluetooth from settings")
-                        self.updateState(state: true)
-                    } else {
-//                        print("Please disable bluetooth from settings")
-                        self.updateState(state: true)
-                    }
-                }
-           }
+        AppDelegate.openBluetoothDialogueBox(action: shouldEnable ? "On" : "Off")
+//        AppDelegate.openBluetoothSettings { isSuccess in
+//                if isSuccess == false {
+////                    print("Error opening Settings")
+//                    self.updateState(state: false)
+//                } else {
+//                    if(shouldEnable) {
+////                        print("Please enable bluetooth from settings")
+//                        self.updateState(state: true)
+//                    } else {
+////                        print("Please disable bluetooth from settings")
+//                        self.updateState(state: true)
+//                    }
+//                }
+//           }
         
       }
     
@@ -165,6 +167,21 @@ import CoreBluetooth
 
 
 extension AppDelegate {
+    
+    static func openBluetoothDialogueBox(action: String) {
+        let alert = UIAlertController(title: "Bluetooth", message: "Please go to Settings > Bluetooth to turn it \(action).", preferredStyle: .alert)
+                
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+
+        while let presentedViewController = rootViewController?.presentedViewController {
+            rootViewController = presentedViewController
+        }
+
+        rootViewController?.present(alert, animated: true, completion: nil)
+    }
 
     static func openBluetoothSettings(_ sender: Any) {
         if let url = URL(string: UIApplication.openSettingsURLString) {

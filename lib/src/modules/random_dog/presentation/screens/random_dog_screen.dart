@@ -1,5 +1,3 @@
-
-import 'package:assignment/src/core/utils/text_styles.dart';
 import 'package:assignment/src/core/widgets/app_bar.dart';
 import 'package:assignment/src/core/widgets/button_widget.dart';
 import 'package:assignment/src/modules/random_dog/presentation/widgets/local_image_view.dart';
@@ -15,12 +13,13 @@ class RandomDogScreen extends GetView<RandomDogController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Random Dog",),
+      appBar: const CustomAppBar(
+        title: "Random Dog",
+      ),
       body: _body(),
       bottomNavigationBar: _refreshButton(),
     );
   }
-
 
   Widget _body() {
     return Center(
@@ -28,15 +27,24 @@ class RandomDogScreen extends GetView<RandomDogController> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Obx(() {
-              if(controller.isLoading.value) {
-                return const CircularProgressIndicator();
-              }
-              if(controller.randomDog.value?.path != null) {
-                return LocalImageView(randomDog: controller.randomDog.value,);
-              }
-              return RemoteImageView(randomDog: controller.randomDog.value,);
-            },
+            Obx(
+              () {
+                if (controller.isLoading.value) {
+                  return const CircularProgressIndicator();
+                }
+                if (controller.randomDog.value?.path != null) {
+                  return LocalImageView(
+                    randomDog: controller.randomDog.value,
+                    showButton: controller.isRefreshClicked.value,
+                    onRefreshClicked: controller.refreshData,
+                  );
+                }
+                return RemoteImageView(
+                  randomDog: controller.randomDog.value,
+                  showButton: controller.isRefreshClicked.value,
+                  onRefreshClicked: controller.refreshData,
+                );
+              },
             ).marginAll(20),
           ],
         ),
@@ -48,9 +56,9 @@ class RandomDogScreen extends GetView<RandomDogController> {
     return ButtonWidget(
       title: "Refresh",
       onTap: () {
+        controller.isRefreshClicked.value = true;
         controller.refreshData();
       },
     ).marginAll(20);
   }
 }
-

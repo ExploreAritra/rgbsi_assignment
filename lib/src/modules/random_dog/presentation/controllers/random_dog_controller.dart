@@ -18,6 +18,7 @@ class RandomDogController extends GetxController {
   Rx<RandomDogEntity?> randomDog = Rx<RandomDogEntity?>(null);
   Rx<Failure?> failure = Rx<Failure?>(null);
   Rx<bool> isLoading = Rx<bool>(false);
+  Rx<bool> isRefreshClicked = Rx<bool>(false);
 
   @override
   void onInit() {

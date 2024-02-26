@@ -63,6 +63,7 @@ import UIKit
     
     func onCancel(withArguments arguments: Any?) -> FlutterError? {
         self.events = nil
+        centralManager = nil
         return nil
     }
     
